@@ -928,29 +928,29 @@ loadAllThemes();
 </nav>
 
 <style>
-/* ===== MOBILE BOTTOM NAV ===== */
-..mobile-bottom-nav {
+.mobile-bottom-nav {
   position: fixed;
   bottom: 0;
   left: 0;
   width: 100%;
 
-  /* ikut theme + fallback */
-  background: var(--primary, #6d28d9);
+  background: #6d28d9 !important; /* paksa muncul dulu */
 
-  display: none;
+  display: flex !important; /* paksa tampil */
+
   justify-content: space-around;
   padding: 10px 4px;
-  z-index: 9999;
+  z-index: 99999;
 
-  /* biar jelas tidak transparan */
   box-shadow: 0 -4px 15px rgba(0,0,0,0.3);
 }
-  /* BIAR NGGAK TRANSPARAN */
-  opacity: 1 !important;
 
-  /* shadow biar keliatan */
-  box-shadow: 0 -4px 15px rgba(0,0,0,0.3);
+.mobile-bottom-nav a {
+  color: #fff;
+  text-align: center;
+  font-size: 10px;
+  font-weight: 600;
+  flex: 1;
 }
 
 /* ITEM MENU */
