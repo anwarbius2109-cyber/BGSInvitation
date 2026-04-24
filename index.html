@@ -713,23 +713,20 @@
 }
 
 /* hover */
+#categories button {
+  background: var(--secondary);
+  color: var(--primary);
+  border: 1px solid var(--primary);
+}
+
 #categories button:hover {
-  background: linear-gradient(135deg, #c4b5fd, #a78bfa);
-  color: #fff;
-  transform: translateY(-2px);
+  background: var(--primary);
+  color: var(--primary-foreground);
 }
 
-/* klik */
-#categories button:active {
-  transform: scale(0.95);
-}
-
-/* aktif */
 .category-active {
-  background: linear-gradient(135deg, #7c3aed, #5b21b6) !important;
-  color: #fff !important;
-  box-shadow: 0 6px 15px rgba(109,40,217,0.5);
-  transform: scale(1.05);
+  background: var(--primary) !important;
+  color: var(--primary-foreground) !important;
 }
 
 @media (max-width: 768px) {
