@@ -774,7 +774,24 @@ color: var(--primary);
     <script>
 const baseUrl = "https://webinvit.id";
 const phoneNumber = "62895322508505";
-
+// ===== TEMA POPULER MANUAL =====
+const popularThemes = [
+  {
+    name: "Aesthetic Romance",
+    image: "/assets/Aesthetic Romance.jpg",
+    preview: "https://id.sudahnikah.com/s/907268/undangan?kpd=Bapak+Budi"
+  },
+  {
+    name: "Elegan White",
+    image: "/assets/Elegan White.webp",
+    preview: "https://id.sudahnikah.com/d/Elegan-White?kpd=Bapak+Budi"
+  },
+  {
+    name: "Elegan Nature",
+    image: "/assets/Elegan nature.webp",
+    preview: "https://id.sudahnikah.com/d/elegan-and-nature?kpd=Bapak+Budi"
+  }
+];
 const categoryUrl = baseUrl + "/seller/api/v1/categories";
 
 let nextPageUrl = baseUrl + "/seller/api/v1/products/websites?limit=50";
@@ -849,6 +866,13 @@ document.getElementById("searchInput").addEventListener("input", function () {
 
 // ================= FILTER GABUNG =================
 function applyFilter() {
+
+  // 🔥 TAMBAH DI SINI (PALING ATAS)
+  if (currentCategoryId === "popular") {
+    renderPopularThemes();
+    return;
+  }
+
   const keyword = document.getElementById("searchInput").value.toLowerCase();
 
   filteredThemes = allThemes.filter(function(theme) {
@@ -862,7 +886,35 @@ function applyFilter() {
 
   renderThemes(filteredThemes);
 }
+function renderPopularThemes() {
+  const container = document.getElementById("themes");
+  container.innerHTML = "";
 
+  popularThemes.forEach(function(theme) {
+    const card = document.createElement("div");
+
+    card.innerHTML =
+      '<div class="bg-card rounded shadow-lg">' +
+
+        '<div class="aspect-square overflow-hidden relative">' +
+          '<img src="' + theme.image + '" class="w-full h-full object-cover">' +
+          '<span class="absolute top-2 left-2 text-xs bg-primary text-white px-2 py-1 rounded">🔥 Populer</span>' +
+        '</div>' +
+
+        '<div class="p-3">' +
+          '<h3 class="font-bold mb-2">' + theme.name + '</h3>' +
+
+          '<div class="grid grid-cols-2 gap-2">' +
+            '<a href="' + theme.preview + '" target="_blank" class="bg-secondary text-center py-2 rounded text-sm">Preview</a>' +
+            '<a href="https://wa.me/' + phoneNumber + '?text=Pesan+' + theme.name + '" target="_blank" class="bg-primary text-white text-center py-2 rounded text-sm">Pesan</a>' +
+          '</div>' +
+
+        '</div>' +
+      '</div>';
+
+    container.appendChild(card);
+  });
+}
 // ================= LOAD CATEGORIES =================
 async function loadCategories() {
   const container = document.getElementById("categories");
@@ -882,7 +934,15 @@ async function loadCategories() {
       applyFilter();
     };
     container.appendChild(allBtn);
-
+// 🔥 TAMBAH DI SINI
+const popularBtn = document.createElement("button");
+popularBtn.textContent = "🔥 Populer";
+popularBtn.onclick = function () {
+  currentCategoryId = "popular";
+  setActive(this);
+  renderPopularThemes();
+};
+container.appendChild(popularBtn);
     categories.forEach(function(cat) {
 
   // ❌ HAPUS KATEGORI SYUKURAN (atau kosong)
