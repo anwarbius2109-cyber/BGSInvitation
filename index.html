@@ -879,7 +879,35 @@ function applyFilter() {
 
   renderThemes(filteredThemes);
 }
+function renderPopularThemes() {
+  const container = document.getElementById("themes");
+  container.innerHTML = "";
 
+  popularThemes.forEach(function(theme) {
+    const card = document.createElement("div");
+
+    card.innerHTML =
+      '<div class="bg-card rounded shadow-lg">' +
+
+        '<div class="aspect-square overflow-hidden relative">' +
+          '<img src="' + theme.image + '" class="w-full h-full object-cover">' +
+          '<span class="absolute top-2 left-2 text-xs bg-primary text-white px-2 py-1 rounded">🔥 Populer</span>' +
+        '</div>' +
+
+        '<div class="p-3">' +
+          '<h3 class="font-bold mb-2">' + theme.name + '</h3>' +
+
+          '<div class="grid grid-cols-2 gap-2">' +
+            '<a href="' + theme.preview + '" target="_blank" class="bg-secondary text-center py-2 rounded text-sm">Preview</a>' +
+            '<a href="https://wa.me/' + phoneNumber + '?text=Pesan+' + theme.name + '" target="_blank" class="bg-primary text-white text-center py-2 rounded text-sm">Pesan</a>' +
+          '</div>' +
+
+        '</div>' +
+      '</div>';
+
+    container.appendChild(card);
+  });
+}
 // ================= LOAD CATEGORIES =================
 async function loadCategories() {
   const container = document.getElementById("categories");
