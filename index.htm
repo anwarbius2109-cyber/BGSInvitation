@@ -77,7 +77,7 @@
       style="min-height: calc(100vh - 72px)"
     >
       <div class="max-w-4xl mx-auto px-6">
-        <h1 class="text-5xl md:text-7xl font-extrabold mb-6 leading-none">
+        <h1 id="heroText" class="animate-text text-5xl md:text-7xl font-extrabold mb-6 leading-none">
           Undangan Digital Modern untuk
           <span class="text-gradient"> Momen Spesial </span>
         </h1>
@@ -647,7 +647,22 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
 <style>
+/* === ANIMASI HURUF MASUK === */
+.animate-text span {
+  display: inline-block;
+  opacity: 0;
+  transform: translateY(30px);
+  filter: blur(8px);
+  animation: upFade 0.6s ease forwards;
+}
 
+@keyframes upFade {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+    filter: blur(0);
+  }
+}
 /* ===== CATEGORY STYLE (TARUH DI SINI) ===== */
 #categories {
   display: grid;
@@ -977,6 +992,25 @@ function setActive(el) {
 // ================= INIT =================
 loadCategories();
 loadAllThemes();
+// === ANIMASI TEXT HERO ===
+function splitTextAnimation(id) {
+  const el = document.getElementById(id);
+  const text = el.innerText;
+
+  el.innerHTML = "";
+
+  text.split("").forEach((char, i) => {
+    const span = document.createElement("span");
+    span.innerText = char === " " ? "\u00A0" : char;
+    span.style.animationDelay = (i * 0.03) + "s";
+    el.appendChild(span);
+  });
+}
+
+// jalankan saat halaman load
+window.addEventListener("load", function () {
+  splitTextAnimation("heroText");
+});
 </script>
 <!-- MOBILE BOTTOM NAV -->
 <nav class="mobile-bottom-nav">
