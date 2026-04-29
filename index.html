@@ -34,24 +34,36 @@
   <body>
     <header class="sticky top-0 z-100">
   <nav class="h-18 navbar backdrop-blur-xs border-b border-secondary">
-    <div class="h-full w-full px-4 flex items-center justify-between">
+    <div class="h-full w-full px-6 flex items-center">
 
-      <!-- KIRI (LOGO + NAMA TOKO + WA) -->
-<div class="flex items-center gap-3">
-  <img src="/assets/Hantar Undangan.png" alt="Logo" class="h-10 w-10 object-contain" />
-  
-  <span class="text-lg font-bold whitespace-nowrap">
-    ayoo.ngundang
-  </span>
+  <!-- KIRI -->
+  <div class="flex items-center gap-3">
+    <img src="/assets/Hantar Undangan.png" class="h-10 w-10 object-contain" />
+    
+    <span class="text-lg font-bold whitespace-nowrap">
+      ayoo.ngundang
+    </span>
 
-  <!-- ICON WA -->
- <a 
-  href="https://wa.me/62895322508505" 
-  target="_blank"
-  class="w-8 h-8 flex items-center justify-center bg-green-500 text-white rounded-full shadow hover:scale-110 transition"
->
-  <i class="fab fa-whatsapp text-sm"></i>
-</a>
+    <a href="https://wa.me/62895322508505" target="_blank"
+      class="w-8 h-8 flex items-center justify-center bg-green-500 text-white rounded-full shadow hover:scale-110 transition">
+      <i class="fab fa-whatsapp text-sm"></i>
+    </a>
+  </div>
+
+  <!-- MENU (TENGAH) -->
+  <ul class="hidden lg:flex items-center justify-center gap-2 mx-auto">
+    ...
+  </ul>
+
+  <!-- KANAN (GA KEPOJOK) -->
+  <div class="hidden md:flex ml-auto mr-4">
+    <a href="https://wa.me/62895322508505"
+      class="btn px-4 py-2 bg-primary text-white rounded-lg shadow-lg hover:scale-105 transition flex items-center gap-2">
+      <i class="fab fa-whatsapp text-lg"></i>
+      <span>Hubungi Kami</span>
+    </a>
+  </div>
+
 </div>
 
       <!-- MENU -->
