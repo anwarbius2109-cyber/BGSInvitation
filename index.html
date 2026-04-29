@@ -909,10 +909,15 @@ function renderPagination(totalPages, data) {
   nextBtn.innerText = "Next ➡";
   nextBtn.disabled = currentPage === totalPages;
   nextBtn.className = "px-4 py-2 bg-primary text-white rounded";
-  nextBtn.onclick = () => {
-    currentPage++;
-    renderThemes(data);
-  };
+ nextBtn.onclick = () => {
+  currentPage++;
+  renderThemes(data);
+
+  // 🔥 SCROLL KE ATAS SECTION TEMA
+  document.getElementById("tema").scrollIntoView({
+    behavior: "smooth"
+  });
+};
 
   pagination.appendChild(prevBtn);
   pagination.appendChild(info);
